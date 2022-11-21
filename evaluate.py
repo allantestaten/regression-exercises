@@ -30,7 +30,7 @@ def regression_errors(y,yhat):
     print("Sum of Squared errors:",{SSE}) 
     
     #calculate explained sum of squares 
-    ESS = sum((yhat - y.mean()**2).sum()
+    ESS = sum((yhat - y.mean()**2).sum())
     print("Explained Sum of Squares:",{ESS}) 
     
     #calculate total sum of squares 
