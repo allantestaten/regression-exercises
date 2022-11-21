@@ -65,9 +65,9 @@ def baseline_mean_errors(y):
 def better_than_baseline(y,yhat):
     '''this function will determine which model is better
         based on the value of SSE'''
-        SSE, ESS, TSS, MSE, RMSE = regression_errors(y, yhat)
+    SSE, ESS, TSS, MSE, RMSE = regression_errors(y, yhat)
               
-        SSE_baseline, MSE_baseline, RMSE_baseline = baseline_mean_errors(y)
+    SSE_baseline, MSE_baseline, RMSE_baseline = baseline_mean_errors(y)
     if SSE > SSE_baseline:
         print('My Linear Regression model performs worse than the baseline')
     else:
