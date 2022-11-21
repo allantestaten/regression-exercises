@@ -1,4 +1,4 @@
-# Preventing Customer Churn 
+# Predicting home prices
  
 # Project Description
 I am taking the opportunity to demonstrate my skills learned in codeup to impress the Zillow Data Science team in hopes of recieving an opportunity to interview for a position at their company. I will build a model to predict values of single unit properties based on Zillow data from 2017. 
@@ -11,7 +11,8 @@ I am taking the opportunity to demonstrate my skills learned in codeup to impres
  
 # Initial Thoughts
  
-Customer churn is more likely to occur based on the services they recieve and contract type. 
+Home value will depend heavily on the bedrooms, bathrooms and square footage of the home. 
+
 
 # The Plan
  
@@ -19,26 +20,28 @@ Customer churn is more likely to occur based on the services they recieve and co
  
 * Prepare data
    * Created columns representing anticipated drivers that are easy for machine learning model to process
-       * has_churned
-       * tech_support_Yes
-       * contract_type_One year
-       * contract_type_Two year
-       * internet_service_type_Fiber optic
+       * beds
+       * baths
+       * sqft
+       * fips
+       * property_value
+       * total rooms 
+
  
 * Explore data in search of drivers of propety value
    * Answer the following initial questions
-       * How often do customers churn?
-       * Is there an association between churn and Internet Service?
-       * Is there an association between churn and fiber optic internet?
-       * How often do customers with tech support churn?
-       * How often do customers with only phone service churn?
-       * Is there an association between churn and contract type?
+       * What is the median home price?
+       * What is the mean home price?
+       * Is there a signfiicant difference in property value across the three counties?
+       * Is there a correlation between square footage and property value?
+       * Is there a correlation between the bedrooms and property value?
+       * Is there a correlation between the bathrooms and property value?
       
 * Develop a Model to predict an accurate value of the property
    * Use drivers supported by statistical test results to build predictive models
    * Evaluate all models on train 
    * Evaluate top models on validate data 
-   * Select the best model based on highest accuracy
+   * Select the best model based on lowest Root Mean Squared Error
    * Evaluate the best model on test data
  
 * Draw conclusions
@@ -47,11 +50,11 @@ Customer churn is more likely to occur based on the services they recieve and co
 
 | Feature | Definition |
 |:--------|:-----------|
-|Has Churned| True or False, The status of the customer|
-|Internet Service Type| The type of internet service the customer has: none, Fiber Optic, DSL|
-|Tech Support| True or False, The customer does or does not have technical support|
-|Phone Service| True or False, The customer does or does not have phone service|
-|Contract Type| The customer has a contract length of month to month, one year or two years|
+|Beds| Number of bedrooms in the home|
+|Baths| Number of bathrooms in the home|
+|sqft| The square footage of the home|
+|rooms_count| Represents the total number of rooms in the home|
+|fips| The county the property is located in Los Angelese County CA, Ventura CA or Orange County CA|
 
 # Steps to Reproduce
 1) Clone this repo
@@ -62,20 +65,3 @@ def get_db_url(db, user = username, host = host, password = password):
     return f'mysql+pymysql://{user}:{password}@{host}/{db}'
 5) Put the data in the file containing the cloned repo
 6) Run notebook
- 
-# Takeaways and Conclusions
-* 26% of customers churn 
-* There is not an association between phone service and churn 
-* Statistical evidence supports an association between tech support and churn 
-* Statistical evidence supports an association between intertnet service type and churn 
-* There is evidence to support an association between fiber optic internet and churn 
-* Evidence supports an association between contract type and churn 
-* The drivers I used were supported by statistical tests and I believe this is why my final model was able to perform above the baseline
-
-
- 
-# Recommendations
-* Recommendations are actions the stakeholder should take based on your insights
-* Gather qualitative and quantitative data from customer's about the performance of the fiber optic internet 
-* Solicit for quantitative and qualitative data on why customer's select month to month contracts 
-* Review incentives offered for each contract type. 
