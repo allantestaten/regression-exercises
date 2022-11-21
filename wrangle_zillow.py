@@ -60,9 +60,13 @@ def prepare_zillow(df):
     
     df = df[df.beds <= 6]
 
-    df = df[df.sqft <= 2500]
+    df = df[df.sqft < 2500]
 
-    df = df[df.property_value > 0]
+    df = df[df['property_value']< 1_000_000]
+
+    df = df.replace(0, np.nan, inplace=False)
+
+    df = df.dropna()
 
     # Convert fips from number to name of location 
     cleanup_fips = {"fips":{6037: 'Los Angeles CA', 6059:'Orange County CA', 6111: 'Ventura County CA'} }    
